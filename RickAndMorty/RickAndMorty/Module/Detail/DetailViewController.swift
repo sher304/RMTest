@@ -70,13 +70,13 @@ extension DetailViewController: Configurable {
     func configure(with model: Model) {
         self.characterImage.downloadImage(from: model.singleCharacter.image)
         self.characterName.text = model.singleCharacter.name
-        self.characterStatus.text = model.singleCharacter.status
+        self.characterStatus.text = model.singleCharacter.status.rawValue
         switch (model.singleCharacter.status) {
-        case "Alive":
+        case .alive:
             self.characterStatus.textColor = .green
-        case "Dead":
+        case .dead:
             self.characterStatus.textColor = .red
-        default:
+        case .unknown:
             self.characterStatus.textColor = .blue
         }
     }
